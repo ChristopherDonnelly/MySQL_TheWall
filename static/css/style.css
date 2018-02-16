@@ -159,7 +159,7 @@ p.red::before {
 }
 
 #post_message {
-    height: 240px;
+    height: 190px;
 }
 
 .message_text, .comment_card, #post_comment {

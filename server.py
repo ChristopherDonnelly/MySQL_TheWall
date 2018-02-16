@@ -57,8 +57,13 @@ def theWall():
         commentQuery = "SELECT concat(users.first_name, ' ', users.last_name) as full_name, comments.id, comments.message_id, comments.comment, comments.created_at, DATE_FORMAT(comments.created_at, '%M %D %Y') as date FROM comments LEFT JOIN users on comments.user_id = users.id ORDER BY comments.created_at ASC"
         comments = mysql.query_db(commentQuery)
 
-        #print comments
-
+        # print messages[0]['created_at']
+        # print datetime.datetime.now()
+        for message in messages:
+            dt = datetime.datetime.now()-message['created_at']
+            mins = divmod(dt.days * 86400 + dt.seconds, 60)[0]
+            message['mins'] = mins
+        
         return render_template('wall.html', user=user[0], messages=messages, comments=comments)
     else:
         return redirect('/login')

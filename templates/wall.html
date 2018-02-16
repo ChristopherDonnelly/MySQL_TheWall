@@ -17,7 +17,7 @@
                 <div id="post_message">
                     <h3>Post a message</h3>
                     <form action="/post_message" name="post_message" method="post">
-                        <textarea name="post_text" id="post_text" cols="120" rows="8"></textarea>
+                        <textarea name="post_text" id="post_text" cols="120" rows="5"></textarea>
                         <input type="submit" value="Post a message">
                     </form>
                 </div>
@@ -43,8 +43,9 @@
                     {% for message in messages %}
                         <form action="/post_comment" name="post_comment" class="message_card" method="post">
                             <input type="hidden" name="message_id" value="{{ message['id'] }}">
-                            <p class="message_header"> {{ message['full_name'] }} - {{ message['date'] }}
-                                {% if message['user_id'] == session['session_id'] %}
+                            <p class="message_header">
+                                {{ message['full_name'] }} - {{ message['date'] }}
+                                {% if message['user_id'] == session['session_id'] and message['mins'] | int < 30 %}
                                     <a class="delete" href="/delete_message/{{ message['id'] }}">Delete</a>
                                 {% endif %}
                             </p>
@@ -63,7 +64,7 @@
                             {% endfor %}
                             <div id="post_comment">
                                 <p>Post a comment</p>
-                                <textarea name="comment_text" id="comment_text" cols="100" rows="8"></textarea>
+                                <textarea name="comment_text" id="comment_text" cols="100" rows="5"></textarea>
                                 <input type="submit" value="Post a comment">
                             </div>
                         </form>
