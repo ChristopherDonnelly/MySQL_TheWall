@@ -189,3 +189,21 @@ textarea#comment_text {
     margin-left: 15px;
     width: 99%;
 }
+
+a.delete {
+    float: right;
+    font-size: 0.75em;
+    padding: 6px;
+    border: 1px solid lightgray;
+    border-radius: 8px;
+    text-decoration: none;
+    margin-top: -0.75em;
+    color: black;
+    box-shadow: 2px 2px 2px gray;
+}
+
+a.delete:hover {
+    border: 1px solid darkgrey;
+    background-color: lightskyblue;
+    text-shadow: 2px 2px 2px gray;
+}

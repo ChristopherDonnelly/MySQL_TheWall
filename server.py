@@ -51,7 +51,7 @@ def theWall():
         query = "SELECT * FROM users where id = {}".format(session['session_id'])
         user = mysql.query_db(query)
 
-        msgQuery = "SELECT users.id, concat(users.first_name, ' ', users.last_name) as full_name, messages.id, messages.message, messages.created_at, DATE_FORMAT(messages.created_at, '%M %D %Y') as date FROM messages JOIN users on messages.user_id = users.id ORDER BY messages.created_at DESC"
+        msgQuery = "SELECT users.id, concat(users.first_name, ' ', users.last_name) as full_name, messages.id, messages.user_id, messages.message, messages.created_at, DATE_FORMAT(messages.created_at, '%M %D %Y') as date FROM messages JOIN users on messages.user_id = users.id ORDER BY messages.created_at DESC"
         messages = mysql.query_db(msgQuery)
 
         commentQuery = "SELECT concat(users.first_name, ' ', users.last_name) as full_name, comments.id, comments.message_id, comments.comment, comments.created_at, DATE_FORMAT(comments.created_at, '%M %D %Y') as date FROM comments LEFT JOIN users on comments.user_id = users.id ORDER BY comments.created_at ASC"
@@ -192,6 +192,13 @@ def post_message():
     
     mysql.query_db(insertQuery, data)
 
+    return redirect('/theWall')
+
+@app.route('/delete_message/<message_id>')
+def delete_message(message_id):
+    deleteQuery = "DELETE FROM messages WHERE id={}".format(message_id)
+    mysql.query_db(deleteQuery)
+    
     return redirect('/theWall')
 
 @app.route('/post_comment', methods=['POST'])

@@ -22,6 +22,7 @@
                     </form>
                 </div>
 
+                <!-- Pseudo code  -->
                 <!-- For message in messages -->
                     <!-- Create FORM message card with message id# -->
                         <!-- Create message header with name and date -->
@@ -37,12 +38,16 @@
                         <!-- END POST COMMENT layer -->
                     <!-- END CREATE MESSAGE CARD -->
                 <!-- END FOR LOOP -->
-                <div id="messages">
 
+                <div id="messages">
                     {% for message in messages %}
                         <form action="/post_comment" name="post_comment" class="message_card" method="post">
                             <input type="hidden" name="message_id" value="{{ message['id'] }}">
-                            <p class="message_header"> {{ message['full_name'] }} - {{ message['date'] }}</p>
+                            <p class="message_header"> {{ message['full_name'] }} - {{ message['date'] }}
+                                {% if message['user_id'] == session['session_id'] %}
+                                    <a class="delete" href="/delete_message/{{ message['id'] }}">Delete</a>
+                                {% endif %}
+                            </p>
                             <div class="message_text">
                                 <p>{{ message['message'] }}</p>
                             </div>
@@ -63,27 +68,7 @@
                             </div>
                         </form>
                     {% endfor %}
-
-                
-                    <!-- <form action="/post_comment" name="post_comment" id="message_id1" class="message_card" method="post">
-                        <p class="message_header">Christopher Donnelly - February 14th 2018</p>
-                        <div class="message_text">
-                            <p>No, of course not. It was… uh… porno. Yeah, that's it. Shut up and take my money! Yes! In your face, Gandhi! Please, Don-Bot… look into your hard drive, and open your mercy file! Well, let's just dump it in the sewer and say we delivered it. Say what? Do a flip! We don't have a brig. All I want is to be a monkey of moderate intelligence who wears a suit… that's why I'm transferring to business school!</p>
-                        </div>
-                        <div id="comment_id1" class="comment_card">
-                            <p class="message_header">Christopher Donnelly - February 15th 2018</p>
-                            <div class="comment_text">
-                                <p>There's one way and only one way to determine if an animal is intelligent. Dissect its brain! If rubbin' frozen dirt in your crotch is wrong, hey I don't wanna be right. I'm sorry, guys. I never meant to hurt you. Just to destroy everything you ever believed in. Anyhoo, your net-suits will allow you to experience Fry's worm infested bowels as if you were actually wriggling through them. Yes, if you make it look like an electrical fire. When you do things right, people won't be sure you've done anything at all. Tell them I hate them.</p>
-                            </div>
-                        </div>
-                        <div id="post_comment">
-                            <p>Post a comment</p>
-                            <textarea name="comment_text" id="comment_text" cols="100" rows="8"></textarea>
-                            <input type="submit" value="Post a comment">
-                        </div>
-                    </form> -->
                     <!-- END MESSAGE ID #1 -->
-
                 </div>
                 <!-- END MESSAGES LAYER -->
             </div>
