@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+       <title>The Wall</title>
+       <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+    </head>
+    <body>
+        <h1>Welcome to The Wall</h1>
+        <div id="wrapper">
+            <div id="header">
+                <h2>{{ header }}</h2>
+                <a href="{{ link['href'] }}">{{ link['text'] }}</a>
+            </div>
+            <form action='/validate_user' name="request" method='post'>
+                {% for i in range(0, (display|length), 2) %}
+                    <label for="{{ display[i] }}"><span>{{ display[i+1] }}</span>
+                        {% if display[i] == 'password' or display[i] == 'confirm_pw' %}
+                            <input type='password' name='{{ display[i] }}' id='{{ display[i] }}' value="{{ session[display[i]] }}">
+                        {% else %}
+                            <input type='text' name='{{ display[i] }}' id='{{ display[i] }}' value="{{ session[display[i]] }}">
+                        {% endif %}
+                    </label>
+                {% endfor %}
+                <span>
+                    <input type='submit' value='Submit'>
+                </span>
+            </form>
+
+            <div id="errorLayer">
+                {% with messages = get_flashed_messages(with_categories=true) %}
+                    {% if messages %}
+                        {% for category, message in messages %}
+                            <p class="{{ category }}">{{message}}</p>
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
+            </div>
+        </div>
+    </body>
+</html>

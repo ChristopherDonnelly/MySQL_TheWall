@@ -1,0 +1,191 @@
+* {
+    padding: 0px;
+    margin: 0px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#wrapper {
+    width: 650px;
+    margin: 100px auto;
+    padding: 25px 0px 25px 25px;
+    border: 1px solid #000000;
+}
+
+.wall #wrapper {
+    width: 100%;
+    margin: 0px auto;
+    padding: 0px;
+    border: none;
+}
+
+.wall #header {
+    width: 100%;
+    border-bottom: 1px solid black;
+}
+
+h1 {
+    margin: 40px 0px 0px 40px;
+}
+
+h2, p, form {
+    padding: 10px;
+}
+
+.wall #header p, #header_right {
+    display: inline-block;
+    vertical-align: top;
+    line-height: 1.7em;
+    padding-right: 50px;
+}
+
+#header_right {
+    float: right;
+    padding-right: 20px;
+}
+
+h2, a {
+    display: inline-block;
+    vertical-align: bottom;
+}
+#header a {
+    line-height: 2.8em;
+}
+
+form {
+    display: inline-block;
+    width: 55%;
+    vertical-align: text-bottom;
+    padding: 10px 0px 10px 10px;
+}
+
+label, input[type="submit"] {
+    margin: 10px;
+}
+label {
+    display: table-row;
+}
+form span, input, select, textarea, input[type="submit"] {
+    display: table-cell;
+    vertical-align: top;
+    margin: 5px;
+}
+form span {
+    width: 45%;
+    padding: 5px;
+}
+
+select, input[type="text"], input[type="email"], input[type="password"], input[type="date"] {
+    width: 100%;
+    height: 15px;
+}
+
+textarea {
+    width: 100%;
+}
+
+input[type="submit"] {
+    width: 125px;
+    font-weight: bold;
+    height: 30px;
+    margin: 20px 0px;
+    cursor: pointer;
+}
+
+#errorLayer {
+    position: relative;
+    display: inline-block;
+    width: 40%;
+    vertical-align: top;
+    padding-top: 9px;
+}
+
+.red {
+    color: red;
+    font-style: italic;
+}
+
+p.red, .hidden, .message {
+    padding: 0.35em 0px;
+}
+
+p.red::before {
+    content: '*';
+    position: absolute;
+    margin-left: -365px;
+}
+.red.error {
+    position: absolute;
+    left: 0px;
+    top: 8px;
+}
+.red.error.no_match {
+    top: 38px;
+}
+.red.error.register{
+    top: 67px;
+}
+.last {
+    margin-top: 88px;
+}
+
+.second {
+    margin-top: 50px;
+}
+
+.hidden {
+    visibility: hidden;
+}
+
+.none {
+    display: none;
+}
+
+#messages {
+    width: 100%;
+}
+
+#posts_layer {
+    width: 800px;
+    margin: 50px auto
+}
+
+#posts_layer form {
+    display: block;
+    width: 98%;
+}
+
+#posts_layer input[type="submit"] {
+    float: right;
+}
+
+#post_message {
+    height: 240px;
+}
+
+.message_text, .comment_card, #post_comment {
+    margin-left: 20px;
+}
+
+.message_card {
+    margin-bottom: 55px;
+    border-top: 1px dashed lightgray;
+}
+
+#post_comment {
+    margin: 0px 20px;
+}
+
+#post_comment p {
+    padding: 10px 15px 0px;
+    font-weight: bold;
+}
+
+.message_header {
+    font-weight: bold;
+    padding-bottom: 0px;
+}
+
+textarea#comment_text {
+    margin-left: 15px;
+    width: 99%;
+}
